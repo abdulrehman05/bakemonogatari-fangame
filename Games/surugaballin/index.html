@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" type="image/x-icon" href="./files/surugame favicon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suruga Ballin'</title>
+    <style>
+        *{margin:0;padding:0;}
+        body{display:flex;    margin:0;    
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:black;
+}
+@font-face {
+    font-family: 'k8x12';
+    src: url('./files/k8x12.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./files/k8x12.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+*{font-family:'k8x12'; color: white;  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+    .box{
+        width: 1600px;
+        height: 900px;
+        background-image: url(./images/surugame/surugamebg.png);
+background-size:cover;
+        padding: 0;
+        image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+    }
+    
+.ball{
+    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+    display: none;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-image: url(./images/surugame/ball.png);
+    background-size:cover;
+    left: 00px;
+    top:00px;
+}
+.hoop{
+    position: fixed;
+    width: 312px;
+    height: 812px;
+    background-image: url(./images/surugame/hoop.png);
+    background-size:cover;
+    bottom:0;
+    right:0;
+}
+canvas{position: relative;}
+
+#score{position: fixed; top: 50px; background-color: Orange; height: 70px; line-height: 70px; width: 250px; text-align: center; font-size: 60px; font-weight: 400; display:none}
+        .startgame{
+            /* display: none; */
+            position: fixed;
+            width: 1000px;
+            height: 700px;
+            top: 100px;
+            background-color: Orange;
+            left: 300px;
+            border: 3px solid white;
+        }
+        .name{font-size: 80px; border-bottom: 2px solid white; margin: 0; text-align: center; padding-block: 20px;}
+        .story{font-size: 35px; border-bottom: 2px solid yellow; margin: 0; padding: 10px; text-align: center; }
+        .controls{font-size:30px; margin: 0; padding: 5px;}
+        .img1{background: url('images/surugame/balllin.png');} .img{margin-top: 20px; width: 50%; text-align: center; font-size: 30px; padding-top: 10px; color: red; border: 2px solid white;  height: 250px; margin-inline: 2%; background-size: cover; float: left; margin-inline: 24.6%;}
+        .startbtn{font-size: 60px; background-color: blueviolet; border: 2px solid white; width: 500px; height: 80px; margin-top: 20px; margin-left: 250px;}
+        .startbtn:hover{background-color: rgb(147, 59, 230);}
+        .startbtn:active{background-color: red; color: gray;}
+        .endgame{
+            display: none;
+            position: fixed;
+            width: 600px;
+            height: 475px;
+            top: 225px;
+            background-color: Orange;
+            left: 500px;
+            border: 3px solid white;
+        }
+        .finalscore{font-size: 40px; margin:0; text-align: center;}
+        .edbtn{background-color: goldenrod; height: 100px; width: 45%; margin-inline:2%; border: 2px solid white; font-size: 60px;}
+        .edbtn:hover{background-color: yellow;}
+        .edbtn:active{background-color: rgb(112, 84, 14);}
+        .scoretd{font-size: 150px; margin: 0; text-align: center;}
+        .pause{
+            display: none;
+            position: fixed;
+            right: 10px;
+            top:20px;      
+            width: 120px;
+            height: 200px;
+            cursor: pointer;
+        }
+        .pp{
+            float: left;
+            height: 90px;
+            margin-inline: 15px;
+            width: 16px;
+            background-color: white;
+            border: 4px solid black;
+        }
+        .paused{
+            display: none;
+            position: fixed;
+            width: 400px;
+            height: 380px;
+            top: 240px;
+            background-color: Orange;
+            left: 600px;
+            border: 3px solid white;}
+            .pedbtn{background-color: blueviolet; height: 60px; width: 95%; margin-inline:2%; margin-top: 20px; border: 2px solid white; font-size: 40px;}
+        .pedbtn:hover{background-color: rgb(147, 59, 230);}
+        .pedbtn:active{background-color: blueviolet;}
+</style>
+</head>
+<body>
+    <div class="box">
+        <div class="hoop"></div>
+        
+    <canvas></canvas>
+    <div class="ball"></div>
+    <h1 id="score">Score: 0</h1>
+    <div class="startgame"><h1 class="name">Suruga Ballin'</h1>
+    <p class="story">Kanbaru Suruga is Ballin'!</p>
+    <p class="controls">How to Play: Aim and click to shoot <br>
+        Tip: To make it harder, you can't control the power so you have to either shoot it upwards and hope it goes in or just aim it directly.
+        Make as many hoops as you can in 10 shots!
+    </p>
+    <div class="img1 img"></div>  
+    <button class="startbtn" onclick="startgame()">START</button>
+</div>
+<div class="pause" onclick="pause()"> <div class="pp1 pp"></div> <div class="pp2 pp"></div></div>
+<div class="paused"><h1 class="name">Game Paused</h1>
+
+
+<button class="restarted pedbtn" onclick="resume()">RESUME</button>
+<button class="menued pedbtn" onclick="restart()">RESTART</button>
+<button class="menued pedbtn" onclick="menu()">MENU</button>
+</div> 
+
+<div class="endgame"><h1 class="name">Finished!</h1>
+   <p class="finalscore">Score:  </p>
+   <p class="scoretd">0</p>
+   <button class="restarted edbtn" onclick="restart()">RESTART</button>
+   <button class="menued edbtn" onclick="menu()">MENU</button>
+</div> 
+
+
+
+
+
+    </div>
+    <script src="js.js">
+
+    </script>
+</body>
+</html>
