@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitagi Fall</title>
+    <style>
+         @font-face {
+    font-family: 'k8x12';
+    src: url('./files/k8x12.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./files/k8x12.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+*{font-family:'k8x12'; color: white;  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+        .gamediv{    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+position: fixed;}
+#timer{position: fixed; top: 0; background-color: purple; height: 50px; line-height: 50px; width: 200px; text-align: center; font-size: 40px; font-weight: 400; display:none}
+        #score{position: fixed; top: 50px; background-color: purple; height: 70px; line-height: 70px; width: 250px; text-align: center; font-size: 60px; font-weight: 400; display:none}
+        .startgame{
+            /* display: none; */
+            position: fixed;
+            width: 1000px;
+            height: 700px;
+            top: 100px;
+            background-color: purple;
+            left: 300px;
+            border: 3px solid white;
+        }
+        .name{font-size: 80px; border-bottom: 2px solid white; margin: 0; text-align: center; padding-block: 20px;}
+        .story{font-size: 35px; border-bottom: 2px solid plum; margin: 0; padding: 10px; text-align: center; }
+        .controls{font-size:30px; margin: 0; padding: 5px;}
+        .img1{background: url('images/hitagame/front.png');} .img2{background: url('images/hitagame/behind.png');} .img{margin-top: 20px; width: 45.5%; text-align: center; font-size: 30px; padding-top: 10px; color: red; border: 2px solid white;  height: 250px; margin-inline: 2%; background-size: cover; float: left;}
+        .startbtn{font-size: 60px; background-color: blueviolet; border: 2px solid white; width: 500px; height: 80px; margin-top: 20px; margin-left: 250px;}
+        .startbtn:hover{background-color: rgb(147, 59, 230);}
+        .startbtn:active{background-color: red; color: gray;}
+        .endgame{
+            display: none;
+            position: fixed;
+            width: 600px;
+            height: 470px;
+            top: 225px;
+            background-color: purple;
+            left: 500px;
+            border: 3px solid white;
+        }
+        .finalscore{font-size: 40px; margin:0; text-align: center;}
+        .edbtn{background-color: red; height: 100px; width: 45%; margin-inline:2%; border: 2px solid white; font-size: 60px;}
+        .edbtn:hover{background-color: rgb(147, 59, 230);}
+        .edbtn:active{background-color: blueviolet;}
+        .scoretd{font-size: 150px; margin: 0; text-align: center;}
+        .pause{
+            display: none;
+            position: fixed;
+            right: 10px;
+            top:20px;      
+            width: 120px;
+            height: 200px;
+            cursor: pointer;
+        }
+        .pp{
+            float: left;
+            height: 90px;
+            margin-inline: 15px;
+            width: 16px;
+            background-color: white;
+            border: 4px solid black;
+        }
+        .paused{
+            display: none;
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            top: 240px;
+            background-color: purple;
+            left: 600px;
+            border: 3px solid white;}
+            .pedbtn{background-color: blueviolet; height: 60px; width: 95%; margin-inline:2%; margin-top: 20px; border: 2px solid white; font-size: 40px;}
+        .pedbtn:hover{background-color: rgb(147, 59, 230);}
+        .pedbtn:active{background-color: blueviolet;}
+       
+    </style>
+    
+    <link rel="icon" type="image/x-icon" href="./files/hitagame favicon.png">
+</head>
+
+<body>
+    <div class="gamediv">
+        <canvas></canvas>
+        <h1 id="timer">Time: 60</h1>
+        <h1 id="score">Score: 0</h1>
+        <div class="startgame"><h1 class="name">Hitagi Fall</h1>
+        <p class="story">Senjougahara is having a very bad day, But araragi is there to catch her!</p>
+        <p class="controls">How to Play: A to move left, D to move right <br>
+            Tip: If Senjougahara is not glowing purple that means she is behind the stairs. You have to go around to catch her! Catch as many Senjougahara as you can in the given time!
+        </p>
+        <div class="img1 img">Infront of the stairs.</div><div class="img2 img">Behind the stairs.</div>        
+        <button class="startbtn" onclick="startgame()">START</button>
+    </div>
+<div class="pause" onclick="pause()"> <div class="pp1 pp"></div> <div class="pp2 pp"></div></div>
+<div class="paused"><h1 class="name">Game Paused</h1>
+    
+    
+    <button class="restarted pedbtn" onclick="resume()">RESUME</button>
+    <button class="menued pedbtn" onclick="restart()">RESTART</button>
+<button class="menued pedbtn" onclick="menu()">MENU</button>
+ </div> 
+
+    <div class="endgame"><h1 class="name">Time's Up</h1>
+       <p class="finalscore">Score:  </p>
+       <p class="scoretd">0</p>
+       <button class="restarted edbtn" onclick="restart()">RESTART</button>
+       <button class="menued edbtn" onclick="menu()">MENU</button>
+    </div> 
+    <a href="youtbube.com"></a>
+
+</div>
+    <script src="./spiral.js"></script>
+</body>
+
+</html>

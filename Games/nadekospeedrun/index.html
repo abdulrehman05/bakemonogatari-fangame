@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadeko Curse Speedrun</title>
+    
+    <link rel="icon" type="image/x-icon" href="./files/nadegame favicon.png">
+    <style>
+         @font-face {
+    font-family: 'k8x12';
+    src: url('./files/k8x12.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./files/k8x12.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+*{font-family:'k8x12'; color: white;  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+        .gamediv{    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+position: fixed;}
+#timer{position: fixed; top: 0; background-color: rgb(170, 196, 97); height: 70px; line-height: 70px; width: 250px; text-align: center; font-size: 60px; font-weight: 400;
+     display:none
+    }
+        #scorething{position: fixed; top: 0px; background-color: rgb(170, 196, 97); height: 70px; line-height: 70px; width: 450px; text-align: center; font-size: 60px; font-weight: 400; left:575px;
+             display:none
+            }
+        .startgame{
+            /* display: none; */
+            position: fixed;
+            width: 1000px;
+            height: 700px;
+            top: 100px;
+            background-color: rgb(170, 196, 97);
+            left:300px;
+            border: 3px solid white;
+        }
+        .name{font-size: 80px; border-bottom: 2px solid white; margin: 0; text-align: center; padding-block: 20px; color: rgb(255, 255, 181);}
+        .story{font-size: 35px; border-bottom: 2px solid rgb(228, 228, 228); margin: 0; padding: 10px; text-align: center; }
+        .controls{font-size:30px; margin: 0; padding: 5px;}
+        .img1{background: url('images/nadegame/goup.png');} .img2{background: url('images/nadegame/snakee.png');} .img{margin-top: 20px; width: 45.5%; text-align: center; font-size: 30px; padding-top: 10px; color: red; border: 2px solid white;  height: 250px; margin-inline: 2%; background-size: cover; float: left;}
+        .startbtn{font-size: 60px; background-color: #9bcf4b; border: 2px solid white; width: 500px; height: 80px; margin-top: 20px; margin-left: 250px;}
+        .startbtn:hover{background-color: rgb(99, 255, 37);}
+        .startbtn:active{background-color: rgb(106, 204, 76); color: gray;}
+        .endgame{
+            display: none;
+            position: fixed;
+            width: 900px;
+            height: 550px;
+            top: 225px;
+            background: url('images/nadegame/nadess.png');
+            background-size: cover;
+            left: 350px;
+            border: 3px solid white;
+            
+        }
+        .finalscore{font-size: 40px; margin:0; text-align: center;color: yellow;}
+        .edbtn{background-color: rgb(155, 207, 75); height: 100px; width: 45%; margin-inline:2%; border: 2px solid white; font-size: 60px;}
+        .edbtn:hover{background-color: rgb(99, 255, 37);}
+        .edbtn:active{background-color: rgb(251, 255, 0);}
+        .scoretd{font-size: 150px; margin: 0; text-align: center; color: yellow;}
+        .pause{
+            display: none;
+            position: fixed;
+            right: 10px;
+            top:20px;      
+            width: 120px;
+            height: 200px;
+            cursor: pointer;
+        }
+        .pp{
+            float: left;
+            height: 90px;
+            margin-inline: 15px;
+            width: 16px;
+            background-color: white;
+            border: 4px solid black;
+        }
+        .paused{
+            display: none;
+            position: fixed;
+            width: 400px;
+            height: 380px;
+            top: 240px;
+            background-color: rgb(170, 196, 97);
+            left: 600px;
+            border: 3px solid white;}
+            .pedbtn{background-color: rgb(123, 177, 53); height: 60px; width: 95%; margin-inline:2%; margin-top: 20px; border: 2px solid white; font-size: 40px;}
+        .pedbtn:hover{background-color: rgb(131, 199, 43);}
+        .pedbtn:active{background-color: rgb(105, 151, 44); color: rgb(170, 170, 170);}
+        .press{font-size: 100px; position: fixed; top: 300px; width: 1600px; text-align: center; cursor: default; user-select: none;}
+       
+    </style>
+     <link rel="icon" type="image/x-icon" href="./files/nadegame favicon.png">
+
+</head>
+
+<body>
+    <div class="gamediv">
+        <canvas></canvas>
+        <h1 id="timer">Time: 0</h1>
+        <p class="press">PRESS SPACEBAR TO START</p>
+        <h1 id="scorething">Score: 0</h1>
+        <div class="startgame"><h1 class="name">Nadeko Curse Speedrun</h1>
+        <p class="story">Nadeko thinks she's removing her curse but she's actually activating it!</p>
+        <p class="controls">How to Play: SPACEBAR to speed up, MOUSE to kill snakes<br>
+            Tip: Speedup and go up, then kill the snakes using your mouse and come back down using spacebar. <br> Try to get the least time possible!
+        </p>
+        <div class="img1 img">Speed and go Up.</div><div class="img2 img">Kill snakes and go down.</div>        
+        <button class="startbtn" onclick="startgame()">START</button>
+    </div>
+<div class="pause" onclick="pause()"> <div class="pp1 pp"></div> <div class="pp2 pp"></div></div>
+<div class="paused"><h1 class="name">Game Paused</h1>
+    
+    
+    <button class="restarted pedbtn" onclick="resume()">RESUME</button>
+    <button class="menued pedbtn" onclick="restart()">RESTART</button>
+    <button class="menued pedbtn" onclick="menu()">MENU</button>
+ </div> 
+
+    <div class="endgame"><h1 class="name">Finished!</h1>
+       <p class="finalscore">Final Time:  </p>
+       <p class="scoretd">22912931290u3810</p>
+       
+       <button class="restarted edbtn" onclick="restart()">RESTART</button>
+       <button class="menued edbtn" onclick="menu()">MENU</button>
+        <p style="color: rgb(255, 0, 0); font-size: 32px; text-align: center;">SCREENSHOT THIS AND POST IT ON TWITTER AND INSTAGRAM WITH #NADEKOSPEEDRUN</p>
+    </div> 
+
+    <script src="./js.js"></script>
+</body>
+
+</html>

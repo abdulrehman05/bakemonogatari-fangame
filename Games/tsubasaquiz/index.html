@@ -1,0 +1,256 @@
+<head>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'k8x12';
+            src: url('./files/k8x12.woff') format('woff'),
+                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                url('./files/k8x12.ttf') format('truetype');
+            /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+        }
+
+        * {
+            font-family: 'k8x12';
+            color: white;
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            font-weight: 300;
+        }
+
+        .cat {
+            width:100%;
+            height: 100%;
+            background: url(./images/cig.png);
+            
+  background-repeat: no-repeat;
+   background-size: 100% 100%;
+    }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .gamediv {
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            position: fixed;
+            width: 1600px;
+            height: 900px;
+        }
+
+        .bg {
+            position: fixed;
+            width: 1600px;
+            height: 900px;
+            background: url(./images/quizgamebg.png);
+            top: 0;
+            left: 0;
+            background-repeat: none;
+            background-size: cover;
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            position: fixed;
+            z-index: 0;
+        }
+
+        .hanekawa {
+            background: url(./images/quizgamebg\ hanekw.png);
+            background-repeat: none;
+            background-size: cover;
+            opacity: 0;
+            transition: 1s;
+            
+            animation: animhane 3s infinite;
+        }
+
+        .optcont {
+            width: 90%;
+            margin-left: 5%;
+            position: fixed;
+            bottom: 30px;
+            z-index: 10;
+        }
+
+        .btn {
+            width: 44%;
+            float:left;
+            margin-inline: 2.5%;
+            z-index: 10;
+            height: 70px;
+            margin-bottom: 15px;
+            background-color: rgb(0, 108, 216);
+            font-size: 50px;
+            border: 3px solid white;
+            font-family: 'k8x12';
+        }
+
+        .btn:hover {
+            animation: animbtn .8s infinite;
+        }
+
+        .btn:active {
+            animation: animbtn .8s infinite;
+            color: gray;
+        }
+
+        .question {
+            align-self: center;
+            text-align: center;
+            background-color: rgb(0, 108, 216);
+            border: 3px solid white;
+            height: 60px;
+            font-size: 60px;
+            padding: 20px;
+            animation: anim 5s infinite;
+        }
+
+        @keyframes anim {
+            0% {
+                scale: 1;
+                background-color: rgb(0, 108, 216);
+            }
+
+            50% {
+                scale: 1.01;
+                background-color: rgb(0, 76, 216);
+            }
+
+            100% {
+                scale: 1;
+                background-color: rgb(0, 108, 216);
+            }
+        }
+        @keyframes animhane {
+            0% {
+                top: 10px;
+            }
+
+            50% {
+                top:0px;
+            }
+
+            100% {
+                top: 10px;
+            }
+        }
+
+        @keyframes animbtn {
+            0% {
+                scale: 1;
+                background-color: rgb(0, 108, 216);
+            }
+
+            50% {
+                scale: 1.02;
+                background-color: rgb(0, 76, 216);
+            }
+
+            100% {
+                scale: 1;
+                background-color: rgb(0, 108, 216);
+            }
+        }
+
+        @keyframes animact {
+            0% {
+                scale: 1;
+                background-color: rgb(0, 99, 197);
+            }
+
+            50% {
+                scale: 1.02;
+                background-color: rgb(0, 55, 158);
+            }
+
+            100% {
+                scale: 1;
+                background-color: rgb(0, 99, 197);
+            }
+        }
+
+        .startgame{
+            /* display: none; */
+            position: fixed;
+            width: 1000px;
+            height: 400px;
+            top: 250px;
+            background-color: rgb(0, 121, 241);
+            left: 300px;
+            border: 3px solid white;
+            z-index: 100;
+        }
+        .name{font-size: 80px; border-bottom: 2px solid white; margin: 0; text-align: center; padding-block: 20px;}
+        .story{font-size: 35px; border-bottom: 2px solid plum; margin: 0; padding: 10px; text-align: center; }
+        .controls{font-size:30px; margin: 0; padding: 5px;}
+        .img1{background: url('images/hitagame/front.png');} .img2{background: url('images/hitagame/behind.png');} .img{margin-top: 20px; width: 45.5%; text-align: center; font-size: 30px; padding-top: 10px; color: red; border: 2px solid white;  height: 250px; margin-inline: 2%; background-size: cover; float: left;}
+        .startbtn{font-size: 60px; background-color: red; border: 2px solid white; width: 500px; height: 80px; margin-top: 20px; margin-left: 250px;}
+        .startbtn:hover{background-color: rgb(147, 59, 230);}
+        .startbtn:active{background-color: dodgerblue; color: gray;}
+        .endgame{z-index: 100;
+            display: none;
+            position: fixed;
+            width: 600px;
+            height: 470px;
+            top: 225px;
+            background-color: rgb(0, 121, 241);
+            left: 500px;
+            border: 3px solid white;
+        }
+        .finalscore{font-size: 40px; margin:0; text-align: center;}
+        .edbtn{background-color: red; height: 100px; width: 45%; margin-inline:2%; border: 2px solid white; font-size: 60px;}
+        .edbtn:hover{background-color: rgb(147, 59, 230);}
+        .edbtn:active{background-color: dodgerblue;}
+        .scoretd{font-size: 150px; margin: 0; text-align: center;}
+    </style>
+    <link rel="icon" type="image/x-icon" href="./files/quiz game favicon.png">
+    <title>Tsubasa Quiz</title>
+</head>
+
+<body>
+    <div class="gamediv">
+        
+        <div class="bg"></div>
+        <div class="bg hanekawa"></div>
+
+        <div class="startgame"><h1 class="name">Tsubasa Quiz</h1>
+            <p class="story">I ran out of ideas so Here's A Quiz!</p>
+            <p class="controls">How to Play: You need to have extreme knowledge of Bakemonogatari(lie). <br>
+                *Spoilers for Bakemonogatari*
+            </p>      
+            <button class="startbtn" onclick="startgame()">START</button>
+        </div>
+
+        <div class="endgame"><h1 class="name">Time's Up</h1>
+            <p class="finalscore">Score:  </p>
+            <p class="scoretd">0</p>
+            <button class="restarted edbtn" onclick="restart()">RESTART</button>
+            <button class="menued edbtn" onclick="menu()">MENU</button>
+         </div> 
+
+
+
+        <div class="optcont">
+            <h1 class="question"></h1>
+            <button class="btn1 btn" onclick="answer(1)"></button>
+            <button class="btn2 btn" onclick="answer(2)"></button>
+            <button class="btn3 btn" onclick="answer(3)"></button>
+            <button class="btn4 btn" onclick="answer(4)"></button>
+        </div>
+    </div>
+    <script src="js.js"></script>
+</body>
