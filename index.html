@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+    font-family: 'k8x12';
+    src: url('./files/k8x12.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./files/k8x12.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+*{font-family:'k8x12'; user-select: none;}
+body {
+  background: black;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  width:100%;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+.menudiv{
+    background-color: #435042;  
+}
+.menupic{
+    width: 1600px;
+    height: 900px;
+    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+position: fixed;
+left:0;
+}
+.topelement{
+    position: fixed;
+}
+.logo{
+    width: 900px;
+    height: 450px;
+    background: url('images/logo.png');
+    background-size: cover;
+    top:-50px;
+    left: 350px;
+    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+text-align: center;
+color: white;
+font-size: 30px;
+line-height: 850px;
+    
+}
+.menubtn{
+    width: 400px;
+    height:60px;
+    left: 600px;
+    background: rgba(200,20,20,1);
+    font-size: 40px;
+    color:white;
+    border: 3px solid white;
+    transition: .1s;
+    cursor: pointer;
+    
+}
+.menubtn:hover{
+    background:  rgba(220,20,20,1);    
+    border: 3px solid rgba(220,220,220,1);
+   
+}
+.menubtn:active{
+    color:rgb(196, 196, 196);
+    background:  rgba(140,20,20,1);    
+    border: 3px solid rgb(134, 134, 134);
+}
+.menubtn1{
+    top:500px;
+}
+.menubtn2{
+    top:600px;
+}
+.menubtn3{
+    top:700px;
+}
+.topelementitem{
+    position: fixed;
+    transition: .4s;
+}
+.back{
+top: 30px;
+left: 30px;
+height: 100px;
+width: 100px;
+background:url('files/60789.png');
+background-size: cover;
+display: none;
+opacity: 0;
+}
+.credits{
+top: 100px;
+left: 300px;
+height: 700px;
+width: 1000px;
+background:  rgba(220,20,20,0.8);  
+color: white;
+text-align: center;
+font-size: 60px;
+border: 3px solid white;
+box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.6);
+display: none;
+opacity: 0;
+}
+
+.credhead{
+    border-bottom: 1px solid white;
+padding-bottom: 50px;
+}
+.credt{
+
+font-size:32px;
+padding-inline:50px;
+color:rgb(233, 233, 233);
+
+}
+.support{
+top: 150px;
+left: 300px;
+height: 550px;
+width: 1000px;
+background:  rgba(220,20,20,0.8);  
+color: white;
+text-align: center;
+font-size: 60px;
+border: 3px solid white;
+box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.6);
+display: none;
+opacity: 0;
+}
+.games{
+top:-100px;
+left: 0;
+bottom: 0;
+right:0;
+background:  rgba(220,20,20,1);  
+color: white;
+text-align: center;
+font-size: 60px;
+border: 3px solid white;
+box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.6);
+display: none;
+opacity: 0;
+transform: scale(0.8);
+translate: 0px 50px;
+}
+.gamehead{
+    border-bottom: 1px solid white;
+padding-bottom: 50px;
+font-size: 80px;
+margin-top: 40px;
+margin-bottom: -00px;
+}
+
+.gamediv{
+    width: 380px;
+    height: 350px;
+    float: left;    
+    margin-inline: 20px;
+    margin-block: 20px;
+    border: 2px solid black;
+    transition: .25s;
+}
+.gamediv:hover{
+    transform: scale(1.05);    
+    margin-inline: 20px;
+    margin-block: 20px;
+    border: 2px solid black;
+    
+}
+
+.gd1{
+    background-color: blueviolet;
+}
+.gd2{
+    background-color: limegreen;
+}
+.gd3{
+    background-color: goldenrod;
+}
+.gd4{
+background-color: orange;
+    
+}
+.gd5{
+    background-color: rgb(170, 196, 97);
+}
+.gd6{
+    background-color: blue;
+}
+.gameimg1{
+background: url('images/hitagamethumb.png')
+}
+.gameimg2{
+background: url('images/hachigame\ thumb.png')
+}
+.gameimg3{
+background: url('images/fightinggamethumb.png')
+}
+.gameimg4{
+background: url('images/surugame\ thumb.png')
+}
+.gameimg5{
+background: url('images/nadegame\ thumb.png')
+}
+.gameimg6{
+background: url('images/hanegame\ thumb.png')
+}
+.gameimg{
+    height:250px;
+    background-size: 100% 100%;
+    width: 97%;
+    margin-inline: 1.5%;
+    margin-top: 6px;
+    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+.gametitle{
+    margin:0;
+    font-size: 30px;
+    line-height: 60px;
+    color: white;
+}
+.gamecont{
+    width: 80%;
+    margin-inline: auto;
+}
+.settings{
+    top: 300px;
+left: 650px;
+height: 300px;
+width: 300px;
+background:  rgba(220,20,20,0.8);  
+color: white;
+text-align: center;
+font-size: 60px;
+border: 3px solid white;
+box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.6);
+display: none;
+opacity: 0;
+}
+.settingheads{
+    border-bottom: 1px solid white;
+    font-size: 60px;
+    margin:0;
+    margin-bottom:40px
+
+}
+.canvas2{
+    position:fixed;
+    left:300px;
+    bottom:200px;
+    transform:scale(3);
+    image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+.setbtn{
+    font-size: 35px;
+    width: 80%;
+    height: 50px;
+    margin-inline: center;
+    background-color: maroon;
+    color: white;
+    border:3px solid white;
+}
+.setbtn:hover{
+    
+    background-color: red;
+}
+.seticon{
+    height: 80px;
+    width:80px;
+    background: url(./files/setting.png);
+    background-size:cover;
+    transition:1s;
+    border:none;
+    cursor:pointer;
+}
+.seticon:hover{
+    rotate:80deg
+}
+.spacetostart{
+    position: fixed;
+    background-color: black;
+    width:101%;
+    height:100%;
+z-index: 1000;
+transition: 1s;
+margin-left:-2px
+}
+.spacetostart p{
+    color:white;
+    font-size:40px;
+    margin-left:670px;
+    margin-top:670px;
+    animation:panim 1.5s infinite;
+
+}
+.spacetostart div{
+    scale:1.5;
+    margin-top: 100px;
+}
+@keyframes panim {
+    0%{opacity: 1;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.loading{
+    position: fixed;
+    background-color: black;
+    width:101%;
+    height:100%;
+z-index: 10000;
+transition: 1s;
+color:white;
+font-size:240px
+}
+.loading div{
+    width: 100%;
+    height: 600px;
+    margin-top:150px;
+    background:linear-gradient(rgb(180, 0, 0),red,rgb(180, 0, 0));
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left:-2px
+}
+.disclaimer{
+    position: fixed;
+    background-color: black;
+    width:101%;
+    height:100%;
+z-index: 2000;
+transition: 1s;
+color:red;
+margin-left:-2px;
+
+font-size:140px;
+}
+.disclaimer center{
+    margin-top:180px
+}
+.disclaimer center span{
+    margin-top:100px;
+    color: white;
+    font-size: 40px;
+}
+    </style>
+    <link rel="icon" type="icon/iconx" href="./files/menu favicon.png">
+    <title>Bakemonogatari Game</title>
+</head>
+<body>
+    
+        <div class="menudiv">
+    <div class="loading"><div><center>loading</center></div></div>
+    <div class="disclaimer"><div><center>Disclaimer<br><span>All rights of the Monogatari Series belong to KODANSHA, I do not own any of the characters or soundtracks.
+        <br>This is a game made by a fan for the fans. <br><p style="margin-top: 50px;">A Stickman project</p>
+    </span></center></div></div>
+    <div class="spacetostart"><div class="topelement logo">- BAKEMONOGATARI FAN GAME -</div><p>PRESS SPACE TO START</p></div>
+        <canvas class="canvas"></canvas>        
+        <img class="menupic" src="images/menu.png">
+        <canvas class="canvas2"></canvas>
+        <button class="seticon" style="position: fixed; right:20px; top:20px" onclick="settingzon()"></button> 
+        
+            <div class="topelement logo">- BAKEMONOGATARI FAN GAME -</div>
+            <button class="topelement menubtn menubtn1" onclick="gameson()">Play</button>
+            <button class="topelement menubtn menubtn2" onclick="supporton()">Support</button>
+            <button class="topelement menubtn menubtn3" onclick="crediton()">Credits</button>
+           
+            <div class="topelementitem credits"><p class='credhead'>Credits:</p>
+            <p class="credt">First of all I'd like to give a big shout out to <a href="https://www.youtube.com/c/ChrisCourses" target="_blank"> Chris Courses</a> i learned everything from him, Before making this game I didn't even know how to make a game.
+               
+                Other than that I made everything myself. I did trace a few pictures from the original Bakemonogatari Anime. But even still most of the stuff i drew on my own.
+                Now i'll mention some of the stuff i didn't make.
+<br>
+                Obviously I didn't make the music.
+                It was all taken from the Monogatari Series and was composed by Satoru Kosaki and ryo.
+               <br> I used the font k8x12. Which was also used in the Wazamonogatari game. 
+                 
+            </p></div>
+            <div class="topelementitem support">
+                <p class='credhead'>Support:</p>
+                <p class="credt" >
+                    You can help me by sharing the game, but If you would like to directly support me.
+                    You can buy the game files for any price you want at: <a id="link" href="https:/youtube.com" target="_blank">Here</a> 
+                    <br>I'll most likely either buy Monogatari volumes or a new computer soon. After that If I get enough time I'll definitely make more games.
+                </p>
+            </div>
+            <div class="topelementitem games">
+                <p class='gamehead'>Episodes</p>
+                <div class="gamecont">
+                <div onclick="gamego(1)" class="gamediv gd1"><div class="gameimg gameimg1"></div><p class="gametitle">Episode 1: Hitagi Fall</p></div>
+                <div onclick="gamego(2)" class="gamediv gd2"><div class="gameimg gameimg2"></div><p class="gametitle">Episode 2: Mayoi's Bizzare Adventure</p></div>
+                <div onclick="gamego(3)" class="gamediv gd3"><div class="gameimg gameimg3"></div><p class="gametitle">Episode 3: Suruga Devil</p></div>
+                <div onclick="gamego(4)" class="gamediv gd4"><div class="gameimg gameimg4"></div><p class="gametitle">Episode 3.5: Suruga Ballin'</p></div>
+                <div onclick="gamego(5)" class="gamediv gd5"><div class="gameimg gameimg5"></div><p class="gametitle">Episode 4: Nadeko Curse Speedrun</p></div>
+                <div onclick="gamego(6)" class="gamediv gd6"><div class="gameimg gameimg6"></div><p class="gametitle">Episode 5: Tsubasa Quiz</p></div></div>
+            </div>
+            <div class="topelementitem settings">
+                <p class='settingheads'>Settings:</p>
+                <button class="sfx setbtn" onclick="soundtoggle()">Sound Effects: ON</button>
+                <button class="music setbtn"onclick="musictoggle()">Music: ON</button>
+            </div>
+            <button class="topelementitem back" onclick="back()"></button>
+    </div>
+        
+<script src="js.js"></script>
+</body>
+</html>
