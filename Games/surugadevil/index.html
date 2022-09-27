@@ -1,0 +1,266 @@
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   
+    <link
+
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+
+      rel="stylesheet"
+
+    />
+    <link rel="icon" type="image/x-icon" href="./files/devilgame favicon.png">
+<title>Suruga Devil</title>
+    <style>
+  
+      * { margin:0;
+padding:0;
+
+        box-sizing: border-box;
+
+        font-family: 'Press Start 2P', cursive;
+
+      }
+  
+      @font-face {
+    font-family: 'k8x12';
+    src: url('./files/k8x12.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./files/k8x12.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+*{font-family:'k8x12'; color: rgba(255,255,255,1);  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+        .gamediv{  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; }
+.healthbar{
+  height: 30px;
+  background-color: red;
+ 
+}
+.healthcont{
+  width: 35%;
+  position: fixed;
+  top:90px;
+  height: 40px;  
+  border: 5px solid black;
+  z-index: 0;
+}
+.pc{
+  transform: skewX(20deg);
+  left: 150px;
+}
+.ec{
+  right: 150px;
+  rotate: 180deg;
+  transform: skewX(-20deg);
+}
+.healththing{
+  width: 116;
+  height: 86;
+  background-color: red;
+  position: fixed;
+  top: 25px;
+  transition: .1s;
+  transform: scale(1.5);
+  image-rendering: auto;
+image-rendering: crisp-edges;
+image-rendering: pixelated; 
+}
+.grad{width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3));}
+.pht{
+
+  background: url(./img/healththing.png);
+   left: 50px;
+}
+.eht{
+  right: 50px;
+  background: url(./img/healththing\ -\ Copy.png);
+}
+.startgame{
+            /* display: none; */
+            position: fixed;
+            width: 1000px;
+            height: 700px;
+            top: 100px;
+            background-color: rgb(238, 194, 0);
+            left: 300px;
+            border: 3px solid white;z-index: 10;
+        }
+        .name{font-size: 80px; border-bottom: 2px solid white; margin: 0; text-align: center; padding-block: 20px;}
+        .story{font-size: 35px; border-bottom: 2px solid plum; margin: 0; padding: 10px; text-align: center; }
+        .controls{font-size:30px; margin: 0; padding: 5px;}
+        .img1{background: url('img/front.png');} .img2{background: url('images/hitagame/behind.png');} .img{margin-top: 20px; width: 49.5%; text-align: center; font-size: 30px; padding-top: 10px; color: rgba(255,255,255,1); border: 2px solid white;  height: 250px; margin-inline: 25%; background-size: cover; float: left;}
+        .startbtn{font-size: 60px; background-color: rgb(255,0,0); border: 2px solid white; width: 500px; height: 80px; margin-top: 20px; margin-left: 250px;}
+        .startbtn:hover{background-color: rgb(255,50,0);}
+        .startbtn:active{background-color: rgb(155,0,0); color: rgba(200,200,200,1);}
+        .endgame{
+            display: none;
+            position: fixed;
+            width: 600px;
+            height: 480px;
+            top: 225px;
+            background-color: rgb(238, 194, 0);
+            left: 500px;
+            border: 3px solid white;
+        }
+        .finalscore{font-size: 40px; margin:0; text-align: center;}
+        .edbtn{background-color: red; height: 100px; width: 45%; margin-inline:2%; border: 2px solid white; font-size: 60px;}
+        .edbtn:hover{background-color: rgb(255,50,0);}
+        .edbtn:active{background-color: rgb(155,0,0);}
+        .scoretd{font-size: 150px; margin: 0; text-align: center;color: white;}
+        .pause{
+            display: none;
+            position: fixed;
+            left: 755px;
+            top:20px;      
+            width: 120px;
+            height: 255px;
+            cursor: pointer;
+        }
+        .pp{
+            float: left;
+            height: 90px;
+            margin-inline: 15px;
+            width: 16px;
+            background-color: white;
+            border: 4px solid black;
+        }
+        .paused{
+            display: none;
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            top: 240px;
+            background-color: rgb(238, 194, 0);
+            left: 600px;
+            border: 3px solid white;}
+            .pedbtn{background-color: red; height: 60px; width: 95%; margin-inline:2%; margin-top: 20px; border: 2px solid white; font-size: 40px;}
+        .black{position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:black;z-index: 1; transition: 3s;}
+    </style>
+
+  </head>
+
+  <body>
+<div class="gamediv">
+    
+  <canvas></canvas>
+  <div class="black"></div>
+ <div ></div>
+  <div class="healthcont pc">
+          <div
+
+            id="playerHealth"
+            class="healthbar"
+
+            style="
+
+
+           
+
+              width: 100%;
+
+            "
+
+          ><div class="grad"></div></div>
+        </div>
+        <div class="healththing pht"></div>
+
+
+        <!-- enemy health -->
+       <div class="healthcont ec">
+          <div
+
+            id="enemyHealth"
+class="healthbar"
+            style="
+
+width: 100%;
+            "
+
+          ><div class="grad"></div></div>
+        </div>
+        
+        <div class="healththing eht"></div>
+
+      <div
+
+        id="displayText"
+
+        style="
+
+          position: fixed;
+
+          color: rgba(255,255,255,1);
+
+          align-items: center;
+
+          justify-content: center;
+
+          top: 0;      
+          left: 0;
+
+          display: none;
+
+        "
+
+      >
+
+        Tie
+
+      </div> 
+      <div class="startgame"><h1 class="name">Suruga Devil</h1>
+      <p class="story">You are rainy devil, Kill Araragi!</p>
+      <p class="controls">How to Play: W,A,S,D to move and SPACE to attack <br>
+          Tip:Try to run away and choose when to attack.
+      </p>
+      <div class="img1 img"></div>    
+      <button class="startbtn" onclick="startgame()">START</button>
+  </div>
+<div class="pause" onclick="pause()"> <div class="pp1 pp"></div> <div class="pp2 pp"></div></div>
+<div class="paused"><h1 class="name">Game Paused</h1>
+  <button class="restarted pedbtn" onclick="resume()">RESUME</button>
+    <button class="menued pedbtn" onclick="restart()">RESTART</button>
+    <button class="menued pedbtn" onclick="menu()">MENU</button>
+ </div> 
+
+    <div class="endgame"><h1 class="name">Fight Finished</h1>
+       <p class="finalscore">Winner:</p>
+       <p class="scoretd">0</p>
+       <button class="restarted edbtn" onclick="restart()">RESTART</button>
+       <button class="menued edbtn" onclick="menu()">MENU</button>
+    </div> 
+
+
+
+
+
+
+    </div>
+
+    
+
+  
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/classes.js"></script>
+
+    <script src="index.js"></script>
+
+
+   </body>
