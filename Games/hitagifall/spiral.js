@@ -499,7 +499,6 @@ function spawnHitagi(){
   }, 5000);
 }
 spawnHitagi()
-console.log(senjougahara)
 const araragi = new Sprite({
 
   position: {
@@ -914,7 +913,6 @@ shadow.update()
       })
     }
   
-    console.log(degree)
     particles.forEach((particle) => {    
       particle.position.y -= particle.height 
   })
@@ -953,7 +951,6 @@ shadow.update()
       particle.position.y -= 900
     })
   }
-    console.log(degree)
     particles.forEach((particle) => {    
       particle.position.y += particle.height   
   })
@@ -962,7 +959,7 @@ shadow.update()
   setTimeout(() => {
     if(gamerun){
     requestAnimationFrame(animate)}
-  }, 1000/60);
+  }, 1000/50);
 }
 window.addEventListener('keydown', (event) => {
   if(!isCatching){
@@ -1010,9 +1007,13 @@ window.addEventListener('keyup', (event) => {
 // c.scale(0.1,0.1)
 // c.translate(1000,5000)
 
-document.addEventListener('DOMContentLoaded', function(event){
-
+const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
   animate()
-
-
-});
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
