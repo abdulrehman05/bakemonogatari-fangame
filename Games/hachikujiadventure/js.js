@@ -168,7 +168,7 @@ class Hachikuji {
     this.framesMax = framesMax
     this.framesCurrent = 0
     this.framesElapsed = 0
-    this.framesHold = 4
+    this.framesHold = 5
     this.offset = offset
     this.velocity= velocity
     this.gravity = 0
@@ -992,7 +992,6 @@ class Claw {
     if (this.framesElapsed % this.framesHold === 0) {
       if (this.framesCurrent < this.framesMax - 1) {
         this.framesCurrent++
-        console.log(this.framesCurrent)
       } else {
         this.framesCurrent = 0
       }
@@ -1375,23 +1374,23 @@ let dialogue = false
     hachikuji.velocity.y = 0
 
     if (keys.a.pressed){
-      hachikuji.velocity.x = -15
+      hachikuji.velocity.x = -5
       hachikuji.switchSprite('walkleft')      
     }else if (keys.d.pressed){
-      hachikuji.velocity.x = 15
+      hachikuji.velocity.x = 5
       hachikuji.switchSprite('walkright')      
     }
     if (keys.w.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y > 100){
-      hachikuji.velocity.y = -10
+      hachikuji.velocity.y = -5
       hachikuji.switchSprite('walkright')      
     }else if (keys.w.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y > 100){
-      hachikuji.velocity.y = -10
+      hachikuji.velocity.y = -5
       hachikuji.switchSprite('walkleft')      
     }else if (keys.s.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y +hachikuji.image.height*3 < canvas.height-110){
-      hachikuji.velocity.y = 10
+      hachikuji.velocity.y = 5
       hachikuji.switchSprite('walkright')      
     }else if (keys.s.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y +hachikuji.image.height*3< canvas.height-101){
-      hachikuji.velocity.y = 10
+      hachikuji.velocity.y = 5
       hachikuji.switchSprite('walkleft')      
     }
     else if(hachikuji.lastKey=== 'd' && hachikuji.velocity.x == 0 && hachikuji.velocity.y == 0){
@@ -1406,45 +1405,45 @@ let dialogue = false
 
     if (keys.a.pressed){
       if (keys.w.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y > 100){
-        hachikuji.velocity.y = -10
+        hachikuji.velocity.y = -5
         hachikuji.switchSprite('walkright')      
       }else if (keys.w.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y > 100){
-        hachikuji.velocity.y = -10
+        hachikuji.velocity.y = -5
         hachikuji.switchSprite('walkleft')      
       }else if (keys.s.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y +hachikuji.image.height*3 < canvas.height-110){
-        hachikuji.velocity.y = 10
+        hachikuji.velocity.y = 5
         hachikuji.switchSprite('walkright')      
       }else if (keys.s.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y +hachikuji.image.height*3< canvas.height-101){
-        hachikuji.velocity.y = 10
+        hachikuji.velocity.y = 5
         hachikuji.switchSprite('walkleft')      
       }
       moveleft()
     }else if (keys.d.pressed){
       if (keys.w.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y > 100){
-        hachikuji.velocity.y = -10 
+        hachikuji.velocity.y = -5 
         hachikuji.switchSprite('walkright')      
       }else if (keys.w.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y > 100){
-        hachikuji.velocity.y = -10
+        hachikuji.velocity.y = -5
         hachikuji.switchSprite('walkleft')      
       }else if (keys.s.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y +hachikuji.image.height*3 < canvas.height-110){
-        hachikuji.velocity.y = 10
+        hachikuji.velocity.y = 5
         hachikuji.switchSprite('walkright')      
       }else if (keys.s.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y +hachikuji.image.height*3< canvas.height-101){
-        hachikuji.velocity.y = 10
+        hachikuji.velocity.y = 5
         hachikuji.switchSprite('walkleft')      
       }
       moveright()    
     }else if (keys.w.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y > 100){
-      hachikuji.velocity.y = -10
+      hachikuji.velocity.y = -5
       hachikuji.switchSprite('walkright')      
     }else if (keys.w.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y > 100){
-      hachikuji.velocity.y = -10
+      hachikuji.velocity.y = -5
       hachikuji.switchSprite('walkleft')      
     }else if (keys.s.pressed && hachikuji.lastKey === 'd' && hachikuji.position.y +hachikuji.image.height*3 < canvas.height-110){
-      hachikuji.velocity.y = 10
+      hachikuji.velocity.y = 5
       hachikuji.switchSprite('walkright')      
     }else if (keys.s.pressed && hachikuji.lastKey === 'a' && hachikuji.position.y +hachikuji.image.height*3< canvas.height-101){
-      hachikuji.velocity.y = 10
+      hachikuji.velocity.y = 5
       hachikuji.switchSprite('walkleft')      
     }else if(hachikuji.lastKey=== 'd' && hachikuji.velocity.x == 0 && hachikuji.velocity.y == 0){
       hachikuji.switchSprite('idleright')
@@ -1536,6 +1535,7 @@ objects.forEach((object, i) =>{
 
 function objectfuntions(index){
   interact.play()
+  if(movement){
   if(index == 'dollar'){
     dollarfunction()
   }
@@ -1571,7 +1571,7 @@ function objectfuntions(index){
   }
   if(index == 'love'){
     lovefunction()
-  }
+  }}
 }
 
 
@@ -1582,9 +1582,9 @@ const dialoguesarray = ["Guess The Silhouette!", "Wrong!!! It's JOTARO", "CORREC
 "Wrong!!! It's Yotsugi!", "CORRECT! It's Yotsugi","What is this....??", "...","wait I know, Maybe this is something from a future installment!",21,
 "Hey Hachikuji!!!", "What are you doing here?", "Im just wandering around.","what about you araragi san?", "I was just here to buy some donuts for oshino..",
 "Oshino has helped me alot so i thought i'd treat him to some donuts!", "oh my! you are so considerate booraragi san", "oi hachikuji!",
-"I know that someone might be playing this game in october But this game isn't a halloween special!", "my name is araragi koyomi!",
+"I know that someone might be playing this in october but", "my name is araragi koyomi!",
 "sorry i bit my tongue", "wrong it was on purpose", "i fwubbed it!", " it wasn't on purpose?!?!?!",
-"oh my! you are so considerate lil ragi san","oi hachikuji!!"," Don't say my name like im a niche rapper or something!","my name is araragi koyomi and im not a rapper, yo",
+"oh my! you are so considerate lil ragi san","oi hachikuji!!"," Don't say my name like im a niche rapper!","my name is araragi koyomi and im not a rapper, yo",
 "sorry i bit my tongue", "wrong it was on purpose", "i fwubbed it!", " it wasn't on purpose?!?!?!",
 "anyways, araragi san. do you know why there are weird things around here today?","I've been seeing dropped things and weird a darkness",
 "huh? i don't know what you are talking about.",
@@ -1625,10 +1625,9 @@ function araragifunction(){
   setTimeout(() => {     
     convo.innerHTML = ''   
     choices3.style.display = 'block'
-        }, 13000);
+        }, 15000);
 }
 
-console.log(dialoguesarray[25])
 
 function araragis(answer){
   choices3.style.display = 'none'
@@ -1638,7 +1637,7 @@ function araragis(answer){
   setTimeout(() => {
     dialogue = true
     const halloween = new Image
-  halloween.src = 'images/hachigame/halloween.jpg'
+  halloween.src = 'images/hachigame/booraragi.png'
   setTimeout(() => {c.drawImage(halloween,0,0,canvas.width,canvas.height);convo.style.opacity = 0.7}, 200);
   ragispeak()
   bruh(28,31)
@@ -1678,19 +1677,18 @@ function araragis(answer){
      setTimeout(() =>{hachispeak();bruh(41,42)
        setTimeout(() =>{ragispeak();bruh(42,43)
         setTimeout(() =>{almost()
-        }, 3000);
-       }, 3000);
-     }, 3000);
-   }, 3000);
+        }, 4000);
+       }, 4000);
+     }, 4000);
+   }, 4000);
   
            }, 7000);
    }, 5500);}
 }
 function almost(){
-  console.log('almost')
   hachispeak()
   setTimeout(() =>{
-    bruh(44,45)
+    bruh(43,45)
     setTimeout(() =>{
       ragispeak()
       bruh(45,47)
@@ -1698,9 +1696,9 @@ function almost(){
         hachispeak()
         bruh(47,50)
         movement = true
-        dialogueoff(3000,araragi.name)
-      }, 4000);
-    }, 3000);
+        dialogueoff(10000,araragi.name)
+      }, 8000);
+    }, 5000);
   }, 100);
 }
 
@@ -1884,7 +1882,6 @@ function dialogueoff(time,objectname){
       if(object.name === objectname){
       objects.splice(i,1)}
     })
-    animate()
     iconimg.style.display = 'none'
   }, time);
 }
@@ -1897,8 +1894,17 @@ function dialogueoff(time,objectname){
 
 // c.scale(0.2,0.2)
 // c.translate(0,2000)
-animate()
 
+const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
+  animate()
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
 
 function moveleft(){
   if(hachikuji.position.x +hachikuji.velocity.x < 101){
@@ -1907,22 +1913,22 @@ function moveleft(){
   }else if(offset > 0){
     hachikuji.switchSprite('walkleft') 
     all.forEach(bruh =>{
-      bruh.position.x += 45
+      bruh.position.x += 10
     })
     particles.forEach(bruh =>{
-      bruh.velocity.x += 45
+      bruh.velocity.x += 10
     })
-    middle.position.x += 45
+    middle.position.x += 10
     cars.forEach(bruh =>{
-      bruh.velocity.x += 45
+      bruh.velocity.x += 10
     })
   offset--
   }}else{
     if (keys.a.pressed){
-      hachikuji.velocity.x = -15
+      hachikuji.velocity.x = -5
       hachikuji.switchSprite('walkleft')      
     }else if (keys.d.pressed){
-      hachikuji.velocity.x = 15
+      hachikuji.velocity.x = 5
       hachikuji.switchSprite('walkright')      
     }
   }
@@ -1933,30 +1939,30 @@ function moveright(){
     hachikuji.switchSprite('walkright') 
   if(yotsugi.position.x <= 380){
     if (keys.a.pressed){
-      hachikuji.velocity.x = -15
+      hachikuji.velocity.x = -5
       hachikuji.switchSprite('walkleft')      
     }else if (keys.d.pressed){
-      hachikuji.velocity.x = 15
+      hachikuji.velocity.x = 5
       hachikuji.switchSprite('walkright')      
     }
   }else if(hachikuji.position.x +hachikuji.velocity.x+hachikuji.image.width > canvas.width/2-20){
     all.forEach(bruh =>{
-      bruh.position.x += -45
+      bruh.position.x += -10
     })
     particles.forEach(bruh =>{
-      bruh.velocity.x += -45
+      bruh.velocity.x += -10
     })
-    middle.position.x += -45
+    middle.position.x += -10
     cars.forEach(bruh =>{
-      bruh.velocity.x += -45
+      bruh.velocity.x += -10
     })
   offset++  
 }else{
   if (keys.a.pressed){
-    hachikuji.velocity.x = -15
+    hachikuji.velocity.x = -5
     hachikuji.switchSprite('walkleft')      
   }else if (keys.d.pressed){
-    hachikuji.velocity.x = 15
+    hachikuji.velocity.x = 5
     hachikuji.switchSprite('walkright')      
   }
 }
@@ -2005,9 +2011,7 @@ window.addEventListener('keydown', (event) => {
       
 
       break
-      case ' ':
-      console.log(objects)
-      break
+      
 
   }
 
@@ -2129,9 +2133,7 @@ function runtime(endlines) {
     i=0
     textthing.innerHTML = ''
       
-    console.log(l)
     typeWriter() 
-    console.log(lth)    
     if(l===lth){
       stopdiag = true
     }  
@@ -2159,7 +2161,7 @@ function down(){
   setTimeout(() => {
     ups()
     clawdown = false
-  }, 6000);
+  }, 4000);
   }
   function ups(){
     
@@ -2179,7 +2181,6 @@ function down(){
   }
   function changedown(){
     if(clawdown){
-    console.log('asdbjasbdhasjb')
     claw.switchSprite('idleclose')
     clawdown = false
     }
@@ -2189,7 +2190,6 @@ function down(){
   
   function get(t){
     if(t){
-    console.log("acquired")
     got = false
     hats.forEach((hat,i) =>{
       if(
@@ -2205,7 +2205,7 @@ function down(){
 setTimeout(() => {
   convo.style.display = 'none'
 }, 2000);
-  }else{console.log("not");got = false}
+  }else{got = false}
     claw.switchSprite('idleopen')
   
   }
