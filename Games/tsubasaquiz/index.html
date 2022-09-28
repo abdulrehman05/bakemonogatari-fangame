@@ -216,6 +216,27 @@
         .edbtn:hover{background-color: rgb(147, 59, 230);}
         .edbtn:active{background-color: dodgerblue;}
         .scoretd{font-size: 150px; margin: 0; text-align: center;}
+        .loading{
+    position: fixed;
+    background-color: black;
+    width:101%;
+    height:100%;
+z-index: 10000;
+transition: 1s;
+color:white;
+font-size:240px
+}
+.loading div{
+    width: 100%;
+    height: 600px;
+    margin-top:150px;
+    background:linear-gradient(rgb(0, 128, 255),dodgerblue,rgb(0, 128, 255));
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left:-2px
+}
+       
     </style>
     <link rel="icon" type="image/x-icon" href="./files/quiz game favicon.png">
     <title>Tsubasa Quiz</title>
@@ -224,6 +245,7 @@
 <body>
     <div class="gamediv">
         
+    <div class="loading"><div><center>loading</center></div></div>
         <div class="bg"></div>
         <div class="bg hanekawa"></div>
 
