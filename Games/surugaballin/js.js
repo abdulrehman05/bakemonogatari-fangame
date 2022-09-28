@@ -154,7 +154,7 @@ function restart(){
   pauseout.play()
   bgm.play()
   balls.position.y = -3021
-  animate()
+
   totalball = 10
   thispoint = false
   ballthrown = 0
@@ -178,8 +178,7 @@ ballthrow(ballthrown)
 ball.style.display = 'none'
 thispoint = false
 kanbaru.position.x = 800 -85*ballthrown
-  
-  animate()
+animate()
 }
 
 const scoretd = document.querySelector('.scoretd')
@@ -457,7 +456,6 @@ if(balls.position.x+60/2+55 > 1310 && balls.position.x+60/2+-5<1340 && balls.pos
   const distance = balls.position.x+60/2+55 - 1340
   const distancepr = distance/55
   const idk = 1.2 - distancepr 
-  console.log(idk)
   if(distancepr>0.5&&distancepr <1){
 balls.velocity.x = balls.velocity.x*-1
 balls.velocity.y *= -0.7
@@ -488,7 +486,7 @@ balls.position.x-=5;bfx.play()
   if(balls.position.x+60>1340 && balls.position.x<1340+150 && balls.position.y+60> 300+60 && balls.position.y < 300+90+60){
     above = true
   }
-  if(balls.position.x+60>1340 && balls.position.x<1340+150 && balls.position.y+60> 425+60 && balls.position.y < 425+90+60){
+  if(balls.position.x+60>1320 && balls.position.x<1320+190 && balls.position.y+60> 445+60 && balls.position.y < 445+90+60){
     basket = true
   }
 
@@ -513,7 +511,7 @@ if(balldown){
 
 // c.fillStyle = 'red'
 // c.fillRect(1340,300+60,150,90)
-// c.fillRect(1340,425+60,150,90)
+// c.fillRect(1320,445+60,190,90)
 
 if(gamerun){
 requestAnimationFrame(animate)
@@ -540,7 +538,6 @@ function ballthrow(b){
   setTimeout(() => {  
      
     kanbaru.switchSprite('walkright')
-    console.log("done")
     
     balls.position.y = 421
     balls.position.x = 893 -85*b
@@ -569,10 +566,18 @@ setInterval(() => {
 //backboard
 c.fillStyle = 'purple'
 c.fillRect(1500,210,30,300)
-animate()
 
 
-
+const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
+  animate()
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
 
 
 
@@ -605,7 +610,6 @@ canvas.addEventListener('click', (event) => {
   // }, 1000);
   const angle = Math.atan2(event.offsetY - balls.position.y, event.offsetX - balls.position.x)
 const speed = 40
-console.log(  ballthrown)
   const velocity = {
       x: Math.cos(angle) * speed,
       y: Math.sin(angle) * speed
@@ -617,5 +621,4 @@ console.log(  ballthrown)
   balls.velocity.y = velocity.y
 
 }
-console.log(canthrow)
 })
