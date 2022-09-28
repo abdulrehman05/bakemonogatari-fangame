@@ -1051,13 +1051,10 @@ function hurt(){
   if(!enemy.dead&&!player.dead){
   if(enemy.health > 90){
     changeColor()
-    console.log('not hurt')
     }else if(enemy.health > 50){
       changeColorh()
-      console.log('hurt1')
       }else if(enemy.health > 0){
         changeColorhh()
-        console.log('hurt2')
         }}
     
 }
@@ -1179,7 +1176,6 @@ if(keys.w.pressed && player.position.y  + player.height >  canvas.height  - 26&&
    }else if(keys.space.pressed && player.attacks === 1 && !player.isAttacking){
     player.attack2()
     player.attacks --
-    console.log(player.attacks)
    }
   
 if(player.position.x+player.width+player.velocity.x+30>canvas.width){
@@ -1205,14 +1201,14 @@ if(enemy.position.x+enemy.velocity.x-40<0){
   }
   
     if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'&&enemy.position.x > 10 &&!enemy.isAttacking) {
-      enemy.velocity.x = -5
+      enemy.velocity.x = -4
   
       enemy.switchSprite('runLeft')
             
   
   
     } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'&&enemy.position.x < canvas.width -60  &&!enemy.isAttacking) {
-      enemy.velocity.x = 5
+      enemy.velocity.x = 4
   
       enemy.switchSprite('run')
   
@@ -1239,7 +1235,7 @@ if(enemy.position.x+enemy.velocity.x-40<0){
   
 
   if(keys.ArrowUp.pressed && enemy.position.y  + enemy.height >  canvas.height  - 26  &&!enemy.isAttacking){
-    enemy.velocity.y = -20
+    enemy.velocity.y = -15
   }
   
 
@@ -1354,8 +1350,16 @@ if (
 
 
 
-
-window.addEventListener('DOMContentLoaded', (event) => {animate()})
+const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
+  animate()
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
 
 
 
@@ -1367,6 +1371,12 @@ setInterval(() => {
   if(enemy.position.x > player.position.x+player.width + 30 && x <9.5){
     keys.ArrowLeft.pressed = true
     enemy.lastKey = 'ArrowLeft'
+    if(x>9.3){
+      keys.ArrowUp.pressed = true
+    setTimeout(() => {
+      keys.ArrowUp.pressed = false
+    }, 100);
+    }
   }else if(enemy.position.x+enemy.width + 30 < player.position.x && x <9.5){keys.ArrowRight.pressed = true;
     enemy.lastKey = 'ArrowRight';
   }else if(x >=9.5){keys.ArrowLeft.pressed = false;keys.ArrowRight.pressed = false;
