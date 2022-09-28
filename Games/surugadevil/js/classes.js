@@ -220,7 +220,7 @@ class Sprite {
   
   
     takeHit() {
-      this.health -= 1
+      this.health -= 2
       this.isAttacking = false
       if (this.health <=0  && (this.lastKey === 'd' || this.lastKey === 'ArrowRight') ) {
                 this.switchSprite('death')
