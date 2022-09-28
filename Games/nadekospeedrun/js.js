@@ -1102,7 +1102,7 @@ imageSrc: './images/nadegame/nadegamebgshrinebush.png',
 name: 'shrinefr'
 
 })
-const snakes = []
+let snakes = []
 
 function spawnSnakes() {
 
@@ -1442,9 +1442,7 @@ window.addEventListener('keyup', (event) => {
                     }
                   }}
         break
-        case 'f':
-          console.log(climbing)
-          break
+       
     }
   })
 
@@ -1453,12 +1451,7 @@ window.addEventListener('keyup', (event) => {
 // c.translate(1000,13000)
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => {
-    animate()
-  }, 100);
 
-});
 
 const endd = document.querySelector('.endgame')
 
@@ -1498,7 +1491,16 @@ animate()
 }
 
 
-
+const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
+  animate()
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
 
 
 
@@ -1516,7 +1518,7 @@ nadeko.velocity.x = 0
 nadeko.velocity.y = 0
 gameend = false
 paused.style.display = 'none'
-
+snakes = []
  game = false
  gamestart = false
  climbing = false
@@ -1981,5 +1983,4 @@ backgroundshi.push(stairsgrass11)
       })
       backgroundshi.push(ragikanb)
 nadeko.switchSprite('idle')
-      animate()
 }
