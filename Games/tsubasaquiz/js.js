@@ -86,7 +86,6 @@ const scoretd = document.querySelector('.scoretd')
 function endgame(){
   hane.style.opacity = '0'
 endd.style.display = 'block';
-qs.style.display = 'none'
 finalscore = score
 scoretd.innerHTML = finalscore
 score = 0
@@ -129,6 +128,7 @@ correctans = 0
  
 questionNo = 0
 question = 0
+questionchange(0)
 }
 
 
@@ -186,7 +186,7 @@ const questions = [
    questionfinish()
   }
  }
- console.log(totalquestions)
+ let result
  function questionfinish(){
   result =( correctans/ totalquestions)*100
   score = result.toFixed(2) + '%'
@@ -201,3 +201,13 @@ const questions = [
   questionbox.style.display = 'none'
   endgame()
  }
+
+ const loadingd = document.querySelector('.loading');
+window.addEventListener('load',()=>{
+  setTimeout(() => {
+    loadingd.style.opacity = 0
+    setTimeout(() => {
+      loadingd.style.display = 'none'      
+    }, 1000);
+  }, 1000);
+})
