@@ -94,6 +94,27 @@ position: fixed;}
             .pedbtn{background-color: blueviolet; height: 60px; width: 95%; margin-inline:2%; margin-top: 20px; border: 2px solid white; font-size: 40px;}
         .pedbtn:hover{background-color: rgb(147, 59, 230);}
         .pedbtn:active{background-color: blueviolet;}
+
+        .loading{
+    position: fixed;
+    background-color: black;
+    width:101%;
+    height:100%;
+z-index: 10000;
+transition: 1s;
+color:white;
+font-size:240px
+}
+.loading div{
+    width: 100%;
+    height: 600px;
+    margin-top:150px;
+    background:linear-gradient(purple,rgb(179, 0, 179),purple);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left:-2px
+}
        
     </style>
     
@@ -102,13 +123,16 @@ position: fixed;}
 
 <body>
     <div class="gamediv">
+        
+    <div class="loading"><div><center>loading</center></div></div>
         <canvas></canvas>
+        
         <h1 id="timer">Time: 60</h1>
         <h1 id="score">Score: 0</h1>
         <div class="startgame"><h1 class="name">Hitagi Fall</h1>
         <p class="story">Senjougahara is having a very bad day, But araragi is there to catch her!</p>
         <p class="controls">How to Play: A to move left, D to move right <br>
-            Tip: If Senjougahara is not glowing purple that means she is behind the stairs. You have to go around to catch her! Catch as many Senjougahara as you can in the given time!
+            Tip: If Senjougahara is not glowing purple that means she is behind the stairs. You have to go around Left or Right to catch her! Catch as many Senjougahara as you can in the given time!
         </p>
         <div class="img1 img">Infront of the stairs.</div><div class="img2 img">Behind the stairs.</div>        
         <button class="startbtn" onclick="startgame()">START</button>
