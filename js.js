@@ -14,14 +14,19 @@
 		var menuback = new Audio('./files/pause out.wav')
 		var sfxd = document.querySelector('.sfx')
 		var musicd = document.querySelector('.music')
-	function removes(){
-    sessionStorage.removeItem("music");
-    sessionStorage.removeItem("sound");
- }
+	let played = sessionStorage.getItem("played");
+	let haveplayed
  let musics = sessionStorage.getItem("music");
 let sounds = sessionStorage.getItem("sound");
 let sound 
 let music
+
+if(played == 'off'|| played == undefined){
+    haveplayed = false
+}else if(played == 'on'){		
+    haveplayed = true
+}
+
 if(sounds == 'on'|| sounds == undefined){
     sound = true
 }else if(sounds == 'off'){
@@ -133,11 +138,12 @@ let loading = true
 				if(!loading){
 				start()}
 			}
-			if(event.key === "D"){
-				removes()
-			}
+			
 		});
-		document.addEventListener('DOMContentLoaded', function(event){
+
+
+		window.addEventListener('load',()=>{
+			if(!haveplayed){
 			setTimeout(() => {
 				loadingd.style.opacity = 0
 				setTimeout(() => {
@@ -147,12 +153,29 @@ let loading = true
 						setTimeout(() => {			
 						loading = false				
 						disclaimerd.style.display = 'none'
-						
+						sessionStorage.setItem('played',"on");
 						}, 1000);						
-					}, 1000);
+					}, 2000);
 				}, 1000);
 			}, 1000);
+		}else{
+			setTimeout(() => {
+				loadingd.style.opacity = 0
+													
+				disclaimerd.style.opacity = '0'	
+				
+				disclaimerd.style.display = 'none'
+				setTimeout(() => {
+					loadingd.style.display = 'none'									
+						loading = false				
+						sessionStorage.setItem('played',"on");
+										
+					}, 1000);
+			}, 1000);
+		}
 		})
+
+
 function start(){
 	if(music){
 	bgm.play()}
@@ -287,7 +310,7 @@ sfxd.innerHTML = 'Sound: ON'
 			  this.framesMax = framesMax
 			  this.framesCurrent = 0
 			  this.framesElapsed = 0
-			  this.framesHold = 4
+			  this.framesHold = 1
 			  this.offset = offset
 			  this.velocity= velocity
 			  this.gravity = 0
@@ -491,14 +514,18 @@ if(sp == 3){
 			this.update = function() {
         this.x += this.velocityx
         this.y += this.velocityy
-        if(this.x<0){
+        if(this.x<0||this.y>canvas.height){
+			let dawg = Math.random()*2
+			if(dawg<=1){
           this.x = Math.random()*canvas.width
-          this.y = 0
+		  
+          this.y = 0}else{
+			this.x = canvas.width
+		  
+          this.y = Math.random()*600
+		  }
         }
-        if(this.y>canvas.height){
-          this.x = canvas.width
-          this.y = Math.random()*canvas.height
-        }
+        
 				this.draw();
 			};
 
@@ -538,19 +565,22 @@ if(sp == 3){
 				var randomColorIndex = Math.floor(Math.random() * 6);
 				var randomRadius = Math.random() * 2;
 
-				// Ensure particles are spawned past screen width and height so
-				// there will be no missing stars when rotating canvas
 				var x = Math.random() * canvas.width ;
 				var y = Math.random() * canvas.height;
-        var velocityx = -4
-        var velocityy = 2
+        var velocityx = -1.4
+        var velocityy = 0.7
 				lightParticles.push(new LightParticle(x, y, randomRadius, colors[randomColorIndex],velocityx=velocityx,velocityy=velocityy));
 			}
 		})();
-
-		function animate() {
+		setInterval(() => {
+			
 			c2.clearRect(0,0,canvas2.width,canvas2.height)
 			shinobu.update()
+		}, 700);
+		
+
+		function animate() {
+			
 			window.requestAnimationFrame(animate);
 			for (var i = 0; i < lightParticles.length; i++) {
 				lightParticles[i].update();
