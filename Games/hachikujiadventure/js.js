@@ -2161,7 +2161,7 @@ function down(){
   setTimeout(() => {
     ups()
     clawdown = false
-  }, 4000);
+  }, 6000);
   }
   function ups(){
     
