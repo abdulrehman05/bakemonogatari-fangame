@@ -1265,7 +1265,7 @@ var particleinterval = setInterval(() => {
 			particles.push(new Particle(0,0,imagesrc,position={x:x,y:y})
 		);
 	
-		}, 50);
+		}, 20);
 		
 	
 
