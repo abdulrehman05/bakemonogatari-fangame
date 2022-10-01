@@ -107,7 +107,7 @@ if(musics == 'on'|| musics == undefined){
 
 
 
-let timeee = 0.01
+let timeee = 0.1
 
 function timerf(){
   setTimeout(() => {
@@ -115,7 +115,7 @@ function timerf(){
     time += timeee
     timer.innerHTML = 'Time: ' + time.toFixed(2)
     timerf()}
-  }, 10);
+  }, 100);
 
 }
 timerf()
