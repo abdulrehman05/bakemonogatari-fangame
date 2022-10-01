@@ -149,6 +149,7 @@ function resume(){
   paused.style.display = 'none'
   game = true
   animate()
+	timerf()
 }
 
 
